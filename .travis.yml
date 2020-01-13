@@ -11,3 +11,14 @@ notifications:
 script:
   - go test      # run a bunch of code checkers/linters in parallel
   - go build addo.go      #Then we are done
+
+ before_deploy:
+      # Set up git user name and tag this commit
+      - git config --local user.name "circutrider21"
+      - git config --local user.email "ymah2401@mpsedu.org"
+      - git tag $VERSION
+ deploy:
+   provider: releases
+   api_key: $TOKEN
+   file: "addo.exe"
+   skip_cleanup: true

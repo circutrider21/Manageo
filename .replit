@@ -1,0 +1,2 @@
+language = "go"
+run = "go test && go run --one=4353 --two=1283923"

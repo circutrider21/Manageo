@@ -1,7 +1,7 @@
 language: go
 
 go:
-- 1.x
+- 1.12
 
 install: true
 
@@ -10,4 +10,4 @@ notifications:
 
 script:
   - go test      # run a bunch of code checkers/linters in parallel
-  - go buld      #Then we are done
+  - go build addo.go      #Then we are done

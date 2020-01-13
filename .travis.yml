@@ -1,0 +1,13 @@
+language: go
+
+go:
+- 1.x
+
+install: true
+
+notifications:
+  email: false
+
+script:
+  - go test      # run a bunch of code checkers/linters in parallel
+  - go buld      #Then we are done

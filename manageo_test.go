@@ -1,4 +1,4 @@
-package mangeo
+package manageo
 
 import "testing"
 

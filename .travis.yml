@@ -20,5 +20,5 @@ script:
  deploy:
    provider: releases
    api_key: $TOKEN
-   file: "addo.exe"
+   file: "mangeo.exe"
    skip_cleanup: true

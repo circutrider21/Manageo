@@ -1,4 +1,4 @@
-package addo
+package mangeo
 
 import "testing"
 

@@ -5,6 +5,7 @@ import (
 	"os/exec"
   "os"
 	"runtime"
+  "io/ioutil"
 )
 func checkw() bool {
   if runtime.GOOS == "windows" {
@@ -12,6 +13,22 @@ func checkw() bool {
 	} else {
 		return false
 	}
+}
+func helptext() {
+  fmt.Println("Usage: Manageo <language> <action> <filename>")
+  fmt.Print("\n")
+  fmt.Println("Suppoted Languages and examples:")
+  fmt.Println("\t Go")
+
+}
+
+func fjhan(command string) {
+  dat, err := ioutil.ReadFile("mango.json")
+  if e != nil {
+    panic(e)
+  }
+  bparse := string(dat)
+  var result map[string]interface{}
 }
 
 func execute(command string) {
@@ -29,6 +46,18 @@ func gobuild(filename string) {
   execute(bqg)
 }
 
+func rbuild(filename, setting string) {
+  switch setting {
+    case "window":
+      huj := "ocra --windows " + filename
+    case "console":
+      huj := "ocra --console " + filename
+    default:
+      huj := "ocra --console " + filename
+  }
+  execute(huj)
+}
+
 func main() {
   version := "1.0.0"
 	fmt.Printf("Manageo Build System %s\n\n Running on %s\n", version, runtime.GOOS)
@@ -37,6 +66,12 @@ func main() {
 		fmt.Println(version)
 	case "go":
 		gobuild(os.Args[2])
+  case "help":
+    helptext()
+  case "ruby":
+    rbuild(os.Args[3], os.Args[2])
+  case "file":
+    fjhan()
 	default:
 		// freebsd, openbsd,
 		// plan9, windows...

@@ -6,6 +6,7 @@ import (
   "os"
 	"runtime"
   "io/ioutil"
+  "encoding/json"
 )
 func checkw() bool {
   if runtime.GOOS == "windows" {
@@ -18,14 +19,14 @@ func helptext() {
   fmt.Println("Usage: Manageo <language> <action> <filename>")
   fmt.Print("\n")
   fmt.Println("Suppoted Languages and examples:")
-  fmt.Println("\t Go")
-
+  fmt.Println("\t Go: Manageo go <filename>")
+  fmt.Println("\t Ruby: Manageo ruby <windows | console> <filename>")
 }
 
 func fjhan(command string) {
   dat, err := ioutil.ReadFile("mango.json")
-  if e != nil {
-    panic(e)
+  if err != nil {
+    panic(err)
   }
   bparse := string(dat)
   var result map[string]interface{}
@@ -46,20 +47,8 @@ func gobuild(filename string) {
   execute(bqg)
 }
 
-func rbuild(filename, setting string) {
-  switch setting {
-    case "window":
-      huj := "ocra --windows " + filename
-    case "console":
-      huj := "ocra --console " + filename
-    default:
-      huj := "ocra --console " + filename
-  }
-  execute(huj)
-}
-
 func main() {
-  version := "1.0.0"
+  version := "1.1.0"
 	fmt.Printf("Manageo Build System %s\n\n Running on %s\n", version, runtime.GOOS)
   switch arga := os.Args[1]; arga {
 	case "version":
@@ -68,13 +57,9 @@ func main() {
 		gobuild(os.Args[2])
   case "help":
     helptext()
-  case "ruby":
-    rbuild(os.Args[3], os.Args[2])
-  case "file":
-    fjhan()
 	default:
 		// freebsd, openbsd,
 		// plan9, windows...
-		fmt.Println("No Actions Have Been Specified")
+		fjhan(os.Args[2])
 	}
 }

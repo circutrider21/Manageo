@@ -14,11 +14,22 @@ Json, Which will allow for faster deploy times and less errors.
 
 ## Usage
 
+For Golang
+
 ```bash
 
-$ Manago go <filename>
+$ Manageo go <filename>
 
 ```
+
+For Ruby
+
+```bash
+
+$ Manageo ruby <windows | console> <filename>
+
+```
+_This command works only on windows and requires the gem ocra_
 
 ## Collaborating and Final Words
 
